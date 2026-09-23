@@ -1,16 +1,31 @@
-"""Base de conocimiento simplificada de TransMilenio."""
+"""Base de conocimiento simplificada de TransMilenio.
+
+Este modulo contiene los hechos del dominio: estaciones, conexiones, lineas
+y reglas que utiliza el sistema inteligente para razonar sobre las rutas.
+"""
 
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class Connection:
+    """Representa una conexion entre dos estaciones.
+
+    Attributes:
+        origin: Identificador de la estacion de origen.
+        destination: Identificador de la estacion de destino.
+        line: Letra de la linea de TransMilenio.
+        minutes: Tiempo estimado del trayecto entre estaciones.
+    """
+
     origin: str
     destination: str
     line: str
     minutes: int
 
 
+# Hecho estacion(id, nombre): relaciona la clave usada por el programa
+# con el nombre que se muestra al usuario.
 STATIONS = {
     "portal_americas": "Portal Americas",
     "banderas": "Banderas",
@@ -32,7 +47,8 @@ STATIONS = {
 }
 
 
-# Hechos: conecta(origen, destino, linea, tiempo_estimado).
+# Hechos conecta(origen, destino, linea, tiempo_estimado).
+# Estas conexiones son una representacion academica y simplificada.
 CONNECTIONS = [
     Connection("portal_americas", "banderas", "F", 4),
     Connection("banderas", "mundo_avenida", "F", 3),
@@ -53,6 +69,7 @@ CONNECTIONS = [
 ]
 
 
+# Reglas logicas que explican como interpreta el sistema los hechos.
 RULES = [
     "Si dos estaciones tienen una conexion, se puede viajar entre ellas.",
     "Si cambia la linea, se registra un transbordo.",
@@ -62,8 +79,16 @@ RULES = [
 
 
 def build_graph():
-    """Convierte los hechos de conexion en un grafo bidireccional."""
+    """Convierte los hechos de conexion en un grafo bidireccional.
+
+    Aunque cada hecho se declara una sola vez, una persona puede desplazarse
+    en ambos sentidos. Por eso la funcion agrega la conexion original y una
+    conexion inversa al grafo.
+    """
+    # Se crea una lista vacia para cada estacion.
     graph = {station: [] for station in STATIONS}
+
+    # Se agregan las conexiones de ida y de regreso.
     for connection in CONNECTIONS:
         graph[connection.origin].append(connection)
         graph[connection.destination].append(
