@@ -5,22 +5,22 @@ from knowledge import RULES, STATIONS
 from route_search import best_route, format_route
 
 
+# Muestra las claves de las estaciones que se pueden consultar.
 def show_stations():
-    # Muestra las claves de las estaciones que se pueden consultar.
     print("\nEstaciones disponibles:")
     for key, name in STATIONS.items():
         print(f"  {key:<18} - {name}")
 
 
+# Muestra las reglas logicas que utiliza el sistema.
 def show_rules():
-    # Muestra las reglas logicas que utiliza el sistema.
     print("\nReglas del sistema:")
     for number, rule in enumerate(RULES, start=1):
         print(f"  {number}. {rule}")
 
 
+# Ejecuta el flujo principal de la aplicacion.
 def main():
-    # Ejecuta el flujo principal de la aplicacion.
     print("=== SISTEMA INTELIGENTE DE RUTAS TRANSMILENIO ===")
 
     # Se informa al usuario que estaciones y reglas estan disponibles.

@@ -14,8 +14,8 @@ TRANSFER_PENALTY = 8
 
 
 @dataclass
+# Almacena la solucion encontrada por el algoritmo.
 class RouteResult:
-    # Almacena la solucion encontrada por el algoritmo.
     origin: str
     destination: str
     stations: list[str]
@@ -25,10 +25,10 @@ class RouteResult:
     score: int
 
 
+# Encuentra la ruta con menor puntaje desde origen hasta destino.
+# El puntaje es tiempo de viaje mas ocho minutos por cada transbordo.
+# Incluir la ultima linea permite contar correctamente los transbordos.
 def best_route(origin: str, destination: str) -> RouteResult:
-    # Encuentra la ruta con menor puntaje desde origen hasta destino.
-    # El puntaje es tiempo de viaje mas ocho minutos por cada transbordo.
-    # Incluir la ultima linea permite contar correctamente los transbordos.
     # Validacion de los datos ingresados por el usuario.
     if origin not in STATIONS or destination not in STATIONS:
         raise ValueError("La estacion de origen o destino no existe.")
@@ -89,9 +89,9 @@ def best_route(origin: str, destination: str) -> RouteResult:
     raise ValueError("No existe una ruta entre las estaciones indicadas.")
 
 
+# Prepara el resultado para mostrarlo en consola.
+# Convierte las claves internas en nombres comprensibles para el usuario.
 def format_route(result: RouteResult) -> str:
-    # Prepara el resultado para mostrarlo en consola.
-    # Convierte las claves internas en nombres comprensibles para el usuario.
     station_names = " -> ".join(STATIONS[key] for key in result.stations)
     lines = ", ".join(result.lines) if result.lines else "Ninguna"
     return (

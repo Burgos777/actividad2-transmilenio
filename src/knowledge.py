@@ -5,12 +5,12 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
+# Representa una conexion entre dos estaciones.
+# origin: identificador de la estacion de origen.
+# destination: identificador de la estacion de destino.
+# line: letra de la linea de TransMilenio.
+# minutes: tiempo estimado del trayecto entre estaciones.
 class Connection:
-    # Representa una conexion entre dos estaciones.
-    # origin: identificador de la estacion de origen.
-    # destination: identificador de la estacion de destino.
-    # line: letra de la linea de TransMilenio.
-    # minutes: tiempo estimado del trayecto entre estaciones.
     origin: str
     destination: str
     line: str
@@ -71,10 +71,10 @@ RULES = [
 ]
 
 
+# Convierte los hechos de conexion en un grafo bidireccional.
+# Aunque cada hecho se declara una sola vez, una persona puede desplazarse
+# en ambos sentidos. Por eso se agrega la conexion original y la inversa.
 def build_graph():
-    # Convierte los hechos de conexion en un grafo bidireccional.
-    # Aunque cada hecho se declara una sola vez, una persona puede desplazarse
-    # en ambos sentidos. Por eso se agrega la conexion original y la inversa.
     # Se crea una lista vacia para cada estacion.
     graph = {station: [] for station in STATIONS}
 
