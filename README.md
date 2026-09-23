@@ -11,7 +11,7 @@ Proyecto de Inteligencia Artificial.
 - Alexander Patino Londono - I.D. 100150470
 
 Docente: Ing. Sandra Isabel Rodriguez  
-Fecha: 11 de septiembre de 2026
+Fecha: 27 de septiembre de 2026
 
 ## Ejecucion
 
