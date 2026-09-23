@@ -1,8 +1,6 @@
-"""Busqueda de la mejor ruta usando una cola de prioridad.
-
-Se utiliza una variante de Dijkstra, tambien conocida como busqueda de costo
-uniforme, porque siempre se explora primero el estado con menor puntaje.
-"""
+# Busqueda de la mejor ruta usando una cola de prioridad.
+# Se utiliza una variante de Dijkstra, tambien conocida como busqueda de
+# costo uniforme, porque explora primero el estado con menor puntaje.
 
 import heapq
 from dataclasses import dataclass
@@ -17,8 +15,7 @@ TRANSFER_PENALTY = 8
 
 @dataclass
 class RouteResult:
-    """Almacena la solucion encontrada por el algoritmo."""
-
+    # Almacena la solucion encontrada por el algoritmo.
     origin: str
     destination: str
     stations: list[str]
@@ -29,11 +26,9 @@ class RouteResult:
 
 
 def best_route(origin: str, destination: str) -> RouteResult:
-    """Encuentra la ruta con menor puntaje desde origen hasta destino.
-
-    El puntaje es tiempo de viaje mas ocho minutos por cada transbordo.
-    Incluir la ultima linea en el estado permite contar los transbordos.
-    """
+    # Encuentra la ruta con menor puntaje desde origen hasta destino.
+    # El puntaje es tiempo de viaje mas ocho minutos por cada transbordo.
+    # Incluir la ultima linea permite contar correctamente los transbordos.
     # Validacion de los datos ingresados por el usuario.
     if origin not in STATIONS or destination not in STATIONS:
         raise ValueError("La estacion de origen o destino no existe.")
@@ -95,11 +90,8 @@ def best_route(origin: str, destination: str) -> RouteResult:
 
 
 def format_route(result: RouteResult) -> str:
-    """Prepara el resultado para mostrarlo en consola.
-
-    Convierte las claves internas de las estaciones en nombres comprensibles
-    para el usuario y presenta los indicadores de la ruta.
-    """
+    # Prepara el resultado para mostrarlo en consola.
+    # Convierte las claves internas en nombres comprensibles para el usuario.
     station_names = " -> ".join(STATIONS[key] for key in result.stations)
     lines = ", ".join(result.lines) if result.lines else "Ninguna"
     return (

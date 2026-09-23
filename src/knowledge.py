@@ -1,23 +1,16 @@
-"""Base de conocimiento simplificada de TransMilenio.
-
-Este modulo contiene los hechos del dominio: estaciones, conexiones, lineas
-y reglas que utiliza el sistema inteligente para razonar sobre las rutas.
-"""
+# Base de conocimiento simplificada de TransMilenio.
+# Este modulo contiene estaciones, conexiones, lineas y reglas.
 
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class Connection:
-    """Representa una conexion entre dos estaciones.
-
-    Attributes:
-        origin: Identificador de la estacion de origen.
-        destination: Identificador de la estacion de destino.
-        line: Letra de la linea de TransMilenio.
-        minutes: Tiempo estimado del trayecto entre estaciones.
-    """
-
+    # Representa una conexion entre dos estaciones.
+    # origin: identificador de la estacion de origen.
+    # destination: identificador de la estacion de destino.
+    # line: letra de la linea de TransMilenio.
+    # minutes: tiempo estimado del trayecto entre estaciones.
     origin: str
     destination: str
     line: str
@@ -79,12 +72,9 @@ RULES = [
 
 
 def build_graph():
-    """Convierte los hechos de conexion en un grafo bidireccional.
-
-    Aunque cada hecho se declara una sola vez, una persona puede desplazarse
-    en ambos sentidos. Por eso la funcion agrega la conexion original y una
-    conexion inversa al grafo.
-    """
+    # Convierte los hechos de conexion en un grafo bidireccional.
+    # Aunque cada hecho se declara una sola vez, una persona puede desplazarse
+    # en ambos sentidos. Por eso se agrega la conexion original y la inversa.
     # Se crea una lista vacia para cada estacion.
     graph = {station: [] for station in STATIONS}
 
