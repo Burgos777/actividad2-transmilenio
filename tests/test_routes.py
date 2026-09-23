@@ -1,12 +1,18 @@
 # Pruebas automaticas del sistema de busqueda de rutas.
 
+# Permite modificar temporalmente la ruta de importacion de Python.
 import sys
+
+# Proporciona las herramientas para crear y ejecutar pruebas automaticas.
 import unittest
+
+# Permite construir la ruta hacia la carpeta src.
 from pathlib import Path
 
 # Se agrega la carpeta src para poder importar los modulos del proyecto.
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
+# Importa la funcion que sera evaluada en las pruebas.
 from route_search import best_route
 
 

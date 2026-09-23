@@ -1,6 +1,7 @@
 # Base de conocimiento simplificada de TransMilenio.
 # Este modulo contiene estaciones, conexiones, lineas y reglas.
 
+# Permite crear clases que almacenan datos de forma organizada.
 from dataclasses import dataclass
 
 

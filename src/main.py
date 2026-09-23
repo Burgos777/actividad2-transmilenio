@@ -1,7 +1,10 @@
 # Interfaz de consola del sistema inteligente.
 # Coordina la entrada del usuario, la busqueda y la presentacion del resultado.
 
+# Importa las reglas y las estaciones que se muestran al usuario.
 from knowledge import RULES, STATIONS
+
+# Importa las funciones que buscan y formatean la ruta.
 from route_search import best_route, format_route
 
 

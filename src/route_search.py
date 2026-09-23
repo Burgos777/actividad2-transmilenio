@@ -2,9 +2,13 @@
 # Se utiliza una variante de Dijkstra, tambien conocida como busqueda de
 # costo uniforme, porque explora primero el estado con menor puntaje.
 
+# Permite manejar una cola de prioridad para explorar primero la ruta de menor costo.
 import heapq
+
+# Permite crear la estructura que almacena el resultado de la ruta.
 from dataclasses import dataclass
 
+# Importa las estaciones y el grafo construido desde la base de conocimiento.
 from knowledge import STATIONS, build_graph
 
 
