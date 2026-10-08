@@ -1,4 +1,4 @@
-# Actividad 2 y 3 - Inteligencia artificial aplicada a TransMilenio
+# Actividades 2, 3 y 4 - Inteligencia artificial aplicada a TransMilenio
 
 ## Sistema inteligente de rutas y aprendizaje supervisado
 
@@ -45,6 +45,9 @@ python tests/run_tests.py
 - `tests/test_supervised_model.py`: pruebas del modelo supervisado.
 - `docs/datos_y_modelo.md`: descripcion de los datos y del metodo.
 - `output/prediccion_demanda.png`: grafica generada por el modelo.
+- `src/unsupervised_model.py`: agrupamiento no supervisado con K-Means.
+- `tests/test_unsupervised_model.py`: pruebas del agrupamiento.
+- `docs/agrupamiento_no_supervisado.md`: descripcion de la Actividad 4.
 
 ## Actividad 3: modelo supervisado
 
@@ -53,3 +56,11 @@ python src/supervised_model.py
 ```
 
 El modelo clasifica la demanda estimada de una ruta como baja, media o alta utilizando un arbol de decision. Como no se dispone de una fuente completa de datos reales, se utiliza un dataset academico documentado.
+
+## Actividad 4: agrupamiento no supervisado
+
+```bash
+python src/unsupervised_model.py
+```
+
+El programa utiliza K-Means para encontrar tres grupos de situaciones de transporte, sin utilizar la columna `nivel_demanda`. La grafica se guarda en `output/agrupamiento_rutas.png`.
